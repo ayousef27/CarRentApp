@@ -43,5 +43,5 @@ app.get('/', async (req, res) => {
 
 //listen for the http
 app.listen(PORT, () => {
-  console.log('auth app  listening')
+  console.log(`Auth app  listening: ${PORT}`)
 })
