@@ -40,10 +40,7 @@ app.use('/auth', authCtrl)
 app.get('/', async (req, res) => {
   res.render('index.ejs')
 })
-//route for testing-VIP
-app.get('/vip-lounge', isSignedIn, (req, res) => {
-  res.send(`welcome to the lounge ${req.session.user.username}`)
-})
+
 //listen for the http
 app.listen(PORT, () => {
   console.log('auth app  listening')
