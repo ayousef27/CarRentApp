@@ -4,7 +4,7 @@ dotenv.config()
 const express = require('express')
 const app = express()
 const session = require('express-session')
-const passUsertoView = require('./middleware/pass-user-to-view')
+const passUserToView = require('./middleware/pass-user-to-view')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
@@ -12,7 +12,7 @@ const morgan = require('morgan')
 // port config
 const PORT = process.env.PORT ? process.env.PORT : '3000'
 
-//data connecion
+//data connection
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.connection.on('connected', () => {
   console.log(`connected to mongoDB: ${mongoose.connection.name}`)
@@ -28,7 +28,7 @@ app.use(
     saveUninitialized: true
   })
 )
-app.use(passUsertoView)
+app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')

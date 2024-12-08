@@ -52,5 +52,4 @@ router.get('/sign-out', (req, res) => {
   req.session.destroy()
   res.redirect('/')
 })
-//always the last line
 module.exports = router
