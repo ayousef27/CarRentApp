@@ -1,0 +1,33 @@
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>Add a new Car</h1>
+
+  <form method="POST" action="/cars">
+    <label for="manufacturer">Manufacturer Name:</label>
+    <input type="text" name="manufacturer" id="manufacturer" required />
+    <br />
+
+    <label for="model">Model:</label>
+    <input type="text" name="model" id="model" required />
+    <br />
+
+    <label for="year">Year:</label>
+    <input type="number" name="year" id="year" min="2000" required />
+    <br />
+
+    <label for="plate">Plate:</label>
+    <input type="number" name="plate" id="plate" min="0" required />
+    <br />
+
+    <label for="price">price:</label>
+    <input type="number" name="price" id="price" min="0" required />
+    <br />
+
+    <label for="isAvailabile">Is available for rent?</label>
+    <input type="checkbox" name="isAvailabile" id="isAvailabile" required />
+
+    <input type="hidden" id="email" name="email" value="<%= user.email %>" />
+
+    <button type="submit">Add Car</button>
+  </form>
+</body>
