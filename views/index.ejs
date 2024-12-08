@@ -13,7 +13,6 @@
     <a href="/auth/sign-up">Sign-Up</a>
     <a href="/auth/sign-in">Sign-In</a>
     <% } %>
-    <a href="/vip-lounge">Go to lounge</a>
-    <h1>Welcome to app</h1>
+    <h1>Welcome to Car Rental App <% if(user){ %> <%=user.name %> <%} %> </h1>
   </body>
 </html>
