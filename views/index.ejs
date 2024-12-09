@@ -6,15 +6,8 @@
     <title>Document</title>
   </head>
   <body>
-    <% if(user){ %>
-    <p>Hello <%= user.username %></p>
-    <a href="/auth/sign-out">Sign-Out</a>
-    <% }else{%>
-    <a href="/auth/sign-up">Sign-Up</a>
-    <a href="/auth/sign-in">Sign-In</a>
-    <% } %>
+    <%- include('./partials/_navbar.ejs') %>
 
-    <h1>Welcome to app</h1>
-    <h1>Welcome to Car Rental App <% if(user){ %> <%=user.name %> <%} %></h1>
+    <h1>Welcome to Car Rental App</h1>
   </body>
 </html>

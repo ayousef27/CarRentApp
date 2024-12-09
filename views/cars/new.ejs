@@ -23,11 +23,12 @@
     <input type="number" name="price" id="price" min="0" required />
     <br />
 
-    <label for="isAvailabile">Is available for rent?</label>
-    <input type="checkbox" name="isAvailabile" id="isAvailabile" />
+    <input type="hidden" id="isAvailabile" name="isAvailabile" value="true" />
 
-    <input type="hidden" id="email" name="email" value="<%= user.email %>" />
-
+    <input type="hidden" id="user" name="user" value="<% user._id%>" />
+    <label for="carImage">Upload Car Image:</label>
+    <input type="file" name="carImage" accept="image/*" />
+    <br />
     <button type="submit">Add Car</button>
   </form>
 </body>
