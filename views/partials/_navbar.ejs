@@ -1,5 +1,9 @@
 <% if (user) {%>
 <h3><%= user.username %></h3>
+<a href="/auth/profile">Edit Profile</a>
+<a href="/cars">View Cars</a>
+<a href="/cars/new">List a Car</a>
+<a href="/rentals">My Rentals</a>
 <a href="/auth/sign-out">Sign out</a>
 <%} else {%>
 <a href="/auth/sign-up">Sign up</a>
