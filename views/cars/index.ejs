@@ -6,17 +6,23 @@
     <title>All Cars</title>
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %>
-
-    <h1>Here's all the Cars</h1>
-
-    <ul>
-      <% cars.forEach((car) => { %>
-      <li>
-        A <%= car.manufacturer %>
-        <a href="/cars/<%= car._id %>">View more details</a>
-      </li>
-      <% }) %>
-    </ul>
+    <% include('../partials/_navbar') %>
+    <h1>Available Cars</h1>
+    <% cars.forEach(car => { %>
+    <div>
+      <h2><%= car.manufacturer %> <%= car.model %> (<%= car.year %>)</h2>
+      <p>Price: $<%= car.price %> per day</p>
+      <p>Available: <%= car.availability ? 'Yes' : 'No' %></p>
+      <% if (user && String(user._id) === String(car.user._id)) { %>
+      <a href="/cars/<%= car._id %>/edit">Edit</a>
+      <form action="/cars/<%= car._id %>?_method=DELETE" method="post">
+        <button type="submit">Delete</button>
+      </form>
+      <% } else if (car.availability) { %>
+      <a href="/rentals/rent/<%= car._id %>">Rent</a>
+      <% } %>
+      <a href="/cars/<%= car._id %>">View Details</a>
+    </div>
+    <% }) %>
   </body>
 </html>

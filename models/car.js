@@ -24,14 +24,14 @@ const carSchema = new mongoose.Schema(
       required: true,
       min: 0
     },
-    isAvailabile: {
+    availability: {
       type: Boolean
       // required: true
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-      //, required: true
+      ref: 'User',
+      required: true
     },
     image: {
       type: String,

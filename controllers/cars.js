@@ -23,7 +23,7 @@ router.get('/new', async (req, res) => {
 
 router.post('/', upload, validateCar, async (req, res) => {
   try {
-    req.body.owner = req.session.user._id
+    req.body.user = req.session.user._id
     await Car.create(req.body)
     res.redirect('/cars')
   } catch (error) {
@@ -60,6 +60,9 @@ router.get('/:carId', async (req, res) => {
 router.get('/:carId/edit', isCarOwner, async (req, res) => {
   try {
     const car = await Car.findById(req.params.carId)
+    if (!car) {
+      return res.status(404).send('Car not found')
+    }
     res.render('cars/edit', { car })
   } catch (error) {
     console.error(error)
@@ -79,7 +82,7 @@ router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
     // await car.save()
     if (selectedCar.user.equals(req.session.user._id)) {
       await selectedCar.updateOne(req.body)
-      res.redirect(`/cars/${car._id}`)
+      res.redirect(`/cars/${selectedCar._id}`)
     } else {
       res.send("You don't have permission to do that.")
     }
@@ -106,11 +109,11 @@ router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
 // Delete car listing
 router.delete('/:carId', isCarOwner, async (req, res) => {
   try {
-    const car = await Car.findById(req.params.id)
+    const car = await Car.findById(req.params.carId)
     if (!car || !car.user.equals(req.session.user._id)) {
       res.send("You don't own this car")
     }
-    await Car.findByIdAndDelete(req.params.id)
+    await Car.findByIdAndDelete(req.params.carId)
     res.redirect('/cars')
   } catch (error) {
     console.error(error)
