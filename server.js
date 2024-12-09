@@ -8,6 +8,8 @@ const passUserToView = require('./middleware/pass-user-to-view')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
+app.set('view engine', 'ejs')
+
 
 // port config
 const PORT = process.env.PORT ? process.env.PORT : '3000'
@@ -28,6 +30,9 @@ app.use(
     saveUninitialized: true
   })
 )
+
+
+
 app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
@@ -40,6 +45,7 @@ app.use('/auth', authCtrl)
 app.get('/', async (req, res) => {
   res.render('index.ejs')
 })
+
 
 //listen for the http
 app.listen(PORT, () => {
