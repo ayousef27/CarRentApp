@@ -46,11 +46,72 @@ router.get('/:id', async (req, res) => {
 // View car details
 router.get('/:carId', async (req, res) => {
   try {
-    const car = await Car.findById(req.params.id).populate('user')
+    const car = await Car.findById(req.params.carId).populate('user')
     if (!car) {
       return res.status(404).send('Car not found')
     }
     res.render('cars/show', { car })
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+// Get car for editing
+router.get('/:carId/edit', isCarOwner, async (req, res) => {
+  try {
+    const car = await Car.findById(req.params.carId)
+    res.render('cars/edit', { car })
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
+  try {
+    const selectedCar = await Car.findById(req.params.carId)
+    // car.manufacturer = req.body.manufacturer
+    // car.model = req.body.model
+    // car.year = req.body.year
+    // car.plate = req.body.plate
+    // car.price = req.body.price
+    // car.availability = req.body.availability
+    // car.image = req.file ? req.file.filename : car.image // Update image path if a new image is uploaded
+    // await car.save()
+    if (selectedCar.user.equals(req.session.user._id)) {
+      await selectedCar.updateOne(req.body)
+      res.redirect(`/cars/${car._id}`)
+    } else {
+      res.send("You don't have permission to do that.")
+    }
+  } catch (error) {
+    console.error(error)
+  }
+})
+
+// router.put('/:listingId', async (req, res) => {
+//   try {
+//     const currentListing = await Listing.findById(req.params.listingId)
+//     if (currentListing.owner.equals(req.session.user._id)) {
+//       await currentListing.updateOne(req.body)
+//       res.redirect('/listings')
+//     } else {
+//       res.send("You don't have permission to do that.")
+//     }
+//   } catch (error) {
+//     console.log(error)
+//     res.redirect('/')
+//   }
+// })
+
+// Delete car listing
+router.delete('/:carId', isCarOwner, async (req, res) => {
+  try {
+    const car = await Car.findById(req.params.id)
+    if (!car || !car.user.equals(req.session.user._id)) {
+      res.send("You don't own this car")
+    }
+    await Car.findByIdAndDelete(req.params.id)
+    res.redirect('/cars')
   } catch (error) {
     console.error(error)
   }
