@@ -32,9 +32,11 @@ app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')
+const carsCtrl = require('./controllers/cars')
 
 //use controller
 app.use('/auth', authCtrl)
+app.use('/cars', isSignedIn, carsCtrl)
 
 //root route
 app.get('/', async (req, res) => {

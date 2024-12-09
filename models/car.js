@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const carSchema = new mongoose.Schema({
   manufacturer: {
     type: String,
@@ -25,10 +24,13 @@ const carSchema = new mongoose.Schema({
     min: 0
   },
   isAvailabile: {
-    type: Boolean,
-    required: true
+    type: Boolean
+    // required: true
   },
-  user: [userSchema]
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }
 })
 
 const Car = mongoose.model('Car', carSchema)

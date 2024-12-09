@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Cars</title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Here's all the Cars</h1>
+    <a href="/cars/new">Add a New Listing</a>
+
+    <ul>
+      <% cars.forEach((car) => { %>
+      <li>
+        A <%= car.manufacturer %>
+        <a href="/cars/<%= car._id %>">View more details</a>
+      </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
