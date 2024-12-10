@@ -29,6 +29,10 @@ app.use(
     saveUninitialized: true
   })
 )
+app.use(express.static('public'))
+
+
+
 app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
@@ -45,6 +49,7 @@ app.use('/rentals', isSignedIn, rentalCtrl)
 app.get('/', async (req, res) => {
   res.render('index.ejs')
 })
+
 
 //listen for the http
 app.listen(PORT, () => {
