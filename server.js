@@ -8,7 +8,7 @@ const passUserToView = require('./middleware/pass-user-to-view')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 // port config
@@ -30,17 +30,19 @@ app.use(
     saveUninitialized: true
   })
 )
+app.use(express.static('public'))
+
 app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')
-const carCtrl= require('./controllers/car')
-const rentalCtrl =require('./controllers/rentals')
+const carCtrl = require('./controllers/car')
+const rentalCtrl = require('./controllers/rentals')
 
 //use controller
 app.use('/auth', authCtrl)
-app.use('/cars', isSignedIn, carCtrl);
-app.use('/rentals', isSignedIn, rentalCtrl);
+app.use('/cars', isSignedIn, carCtrl)
+app.use('/rentals', isSignedIn, rentalCtrl)
 
 //root route
 app.get('/', async (req, res) => {
