@@ -3,6 +3,7 @@ const router = require('express').Router()
 const bcrypt = require('bcrypt')
 //because user is related to model db its capital
 const User = require('../models/user')
+const isSignedIn = require('../middleware/is-signed-in')
 //routes/API's/ Controller Functions
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs')
@@ -52,4 +53,41 @@ router.get('/sign-out', (req, res) => {
   req.session.destroy()
   res.redirect('/')
 })
+
+
+router.get('/profile', async (req, res) => {
+  try {
+    const userId = req.session.user._id
+    const user = await User.findById(userId)
+
+    if (!user) {
+      return res.status(404).send('User not found')
+    }
+
+    res.render('auth/profile', { user })
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('An error occurred')
+  }
+})
+
+// POST Profile (Update Profile)
+router.post('/profile', async (req, res) => {
+  try {
+    const userId = req.session.user._id
+    const { username, email, phone } = req.body
+
+    
+    await User.findByIdAndUpdate(userId, { username, email, phone }, { new: true })
+
+    
+    res.redirect('/auth/profile')
+  } catch (error) {
+    console.log(error)
+    res.status(500).send('An error occurred while updating the profile')
+  }
+})
+
+
+
 module.exports = router
