@@ -11,7 +11,6 @@
     <% include('./partials/_navbar.ejs') %>
     <div class="container">
     <% if(user){ %>
-    <p>Hello <%= user.username %></p>
     <a href="/auth/sign-out">Sign-Out</a>
     <a href="/auth/profile">profile</a>
     <% }else{%>
