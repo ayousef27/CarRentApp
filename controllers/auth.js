@@ -73,23 +73,30 @@ router.get('/profile', async (req, res) => {
 })
 
 // POST Profile (Update Profile)
-router.put('/profile', upload, async (req, res) => {
+router.put('/profile', isSignedIn, upload, async (req, res) => {
   try {
     const userId = req.session.user._id
     const { username, email, phone } = req.body
-
-    req.session.user.image = req.file.filename
-    await User.findByIdAndUpdate(
-      userId,
-      { username, email, phone },
-      { new: true }
-    )
-
-    res.redirect('/auth/profile')
+    const image = req.file ? req.file.filename : null
+    const updateData = { username, email, phone }
+    if (image) {
+      updateData.image = image
+    }
+    const user = await User.findByIdAndUpdate(userId, updateData, { new: true })
+    // Update session user data
+    req.session.user = { username: user.username, _id: user._id }
+    res.redirect('/')
   } catch (error) {
-    console.log(error)
-    res.status(500).send('An error occurred while updating the profile')
+    console.error(error)
+    res.redirect('/profile')
   }
 })
 
+router.delete('/delete-account', isSignedIn, async (req, res) => {
+  const userId = req.session.user._id
+  await User.findByIdAndDelete(userId)
+  // Destroy the session
+  req.session.destroy()
+  res.redirect('/')
+})
 module.exports = router

@@ -24,6 +24,7 @@ router.post('/', upload, validateCar, async (req, res) => {
   try {
     req.body.image= req.file.filename;
     req.body.user = req.session.user._id
+    req.body.image = req.file.filename;   
     await Car.create(req.body)
     res.redirect('/cars')
   } catch (error) {
