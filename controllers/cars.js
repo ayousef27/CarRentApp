@@ -71,25 +71,42 @@ router.get('/:carId/edit', isCarOwner, async (req, res) => {
 
 router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
   try {
-    const selectedCar = await Car.findById(req.params.carId)
-    // car.manufacturer = req.body.manufacturer
-    // car.model = req.body.model
-    // car.year = req.body.year
-    // car.plate = req.body.plate
-    // car.price = req.body.price
-    // car.availability = req.body.availability
-    // car.image = req.file ? req.file.filename : car.image // Update image path if a new image is uploaded
-    // await car.save()
-    if (selectedCar.user.equals(req.session.user._id)) {
-      await selectedCar.updateOne(req.body)
-      res.redirect(`/cars/${selectedCar._id}`)
-    } else {
-      res.send("You don't have permission to do that.")
+    const updatedCar = await Car.findByIdAndUpdate(
+      req.params.carId,
+      {
+        ...req.body,
+        image: req.file ? req.file.filename : undefined // Update image if a new one is uploaded
+      },
+      {
+        new: true, // Return the updated document
+        runValidators: true // Ensure validation is applied
+      }
+    )
+
+    if (!updatedCar) {
+      return res.status(404).send('Car not found')
     }
+
+    res.redirect(`/cars/${updatedCar._id}`)
   } catch (error) {
-    console.error(error)
+    console.error('Error updating car:', error)
+    res.status(500).send('Internal Server Error')
   }
 })
+
+// router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
+//   try {
+//     const selectedCar = await Car.findById(req.params.carId)
+//     if (selectedCar.user.equals(req.session.user._id)) {
+//       await selectedCar.updateOne(req.body)
+//       res.redirect(`/cars/${selectedCar._id}`)
+//     } else {
+//       res.send("You don't have permission to do that.")
+//     }
+//   } catch (error) {
+//     console.error(error)
+//   }
+// })
 
 // router.put('/:listingId', async (req, res) => {
 //   try {

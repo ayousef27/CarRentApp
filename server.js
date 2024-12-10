@@ -8,6 +8,7 @@ const passUserToView = require('./middleware/pass-user-to-view')
 const mongoose = require('mongoose')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
+app.set('view engine', 'ejs')
 
 // port config
 const PORT = process.env.PORT ? process.env.PORT : '3000'
@@ -33,10 +34,12 @@ app.use(passUserToView)
 const authCtrl = require('./controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')
 const carsCtrl = require('./controllers/cars')
+const rentalCtrl = require('./controllers/rentals')
 
 //use controller
 app.use('/auth', authCtrl)
 app.use('/cars', isSignedIn, carsCtrl)
+app.use('/rentals', isSignedIn, rentalCtrl)
 
 //root route
 app.get('/', async (req, res) => {
@@ -45,5 +48,5 @@ app.get('/', async (req, res) => {
 
 //listen for the http
 app.listen(PORT, () => {
-  console.log('auth app  listening')
+  console.log('CarRental app  listening')
 })
