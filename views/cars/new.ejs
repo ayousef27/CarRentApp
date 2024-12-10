@@ -2,7 +2,7 @@
   <%- include('../partials/_navbar.ejs') %>
   <h1>Add a new Car</h1>
 
-  <form method="POST" action="/cars">
+  <form method="POST" action="/cars" enctype="multipart/form-data">
     <label for="manufacturer">Manufacturer Name:</label>
     <input type="text" name="manufacturer" id="manufacturer" required />
     <br />
