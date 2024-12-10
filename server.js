@@ -36,7 +36,7 @@ app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')
-const carCtrl = require('./controllers/car')
+const carCtrl = require('./controllers/cars')
 const rentalCtrl = require('./controllers/rentals')
 
 //use controller
