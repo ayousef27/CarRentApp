@@ -4,12 +4,12 @@ const bcrypt = require('bcrypt')
 //because user is related to model db its capital
 const User = require('../models/user')
 const isSignedIn = require('../middleware/is-signed-in')
-const upload = require('../middleware/upload');
+const upload = require('../middleware/upload')
 //routes/API's/ Controller Functions
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs')
 })
-router.post('/sign-up', upload ,async (req, res) => {
+router.post('/sign-up', upload, async (req, res) => {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username })
     if (userInDatabase) {
@@ -18,10 +18,10 @@ router.post('/sign-up', upload ,async (req, res) => {
     if (req.body.password !== req.body.confirmPassword) {
       return res.send('password and confirm password must match ')
     }
-    req.body.image = req.file.filename;
+    req.body.image = req.file.filename
     //bcrypt for password encryption
     const hashedPassword = bcrypt.hashSync(req.body.password, 10)
-    req.body.password = hashedPassword;
+    req.body.password = hashedPassword
     const user = await User.create(req.body)
     res.send(`THANKS FOR SIGNING UP ${user.username}`)
   } catch (error) {
@@ -56,7 +56,6 @@ router.get('/sign-out', (req, res) => {
   res.redirect('/')
 })
 
-
 router.get('/profile', async (req, res) => {
   try {
     const userId = req.session.user._id
@@ -74,22 +73,23 @@ router.get('/profile', async (req, res) => {
 })
 
 // POST Profile (Update Profile)
-router.post('/profile', async (req, res) => {
+router.put('/profile', upload, async (req, res) => {
   try {
     const userId = req.session.user._id
     const { username, email, phone } = req.body
 
-    
-    await User.findByIdAndUpdate(userId, { username, email, phone }, { new: true })
+    req.session.user.image = req.file.filename
+    await User.findByIdAndUpdate(
+      userId,
+      { username, email, phone },
+      { new: true }
+    )
 
-    
     res.redirect('/auth/profile')
   } catch (error) {
     console.log(error)
     res.status(500).send('An error occurred while updating the profile')
   }
 })
-
-
 
 module.exports = router
