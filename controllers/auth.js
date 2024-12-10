@@ -55,7 +55,7 @@ router.get('/sign-out', (req, res) => {
 })
 
 
-router.get('/profile', isSignedIn, async (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
     const userId = req.session.user._id
     const user = await User.findById(userId)
@@ -69,10 +69,10 @@ router.get('/profile', isSignedIn, async (req, res) => {
     console.log(error)
     res.status(500).send('An error occurred')
   }
-});
+})
 
 // POST Profile (Update Profile)
-router.post('/profile', isSignedIn, async (req, res) => {
+router.post('/profile', async (req, res) => {
   try {
     const userId = req.session.user._id
     const { username, email, phone } = req.body
