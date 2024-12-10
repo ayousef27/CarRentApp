@@ -1,6 +1,6 @@
 <body>
   <h1>Create a new account</h1>
-  <form action="/auth/sign-up" method="post">
+  <form action="/auth/sign-up" method="post" enctype="multipart/form-data">
     <label for="username">Username:</label>
     <input type="text" name="username" />
     <br /><br>
@@ -16,6 +16,9 @@
     <label for="confirmPassword">Confirm Password:</label>
     <input type="password" name="confirmPassword" />
     <br /><br>
+    <label for="profileImage">Choose a Profile Picture:</label>
+    <input type="file" name="carImage" accept="image/*" value="" />
+    <br />
     <button type="submit">Sign Up</button>
   </form>
 </body>

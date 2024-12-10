@@ -4,11 +4,12 @@ const bcrypt = require('bcrypt')
 //because user is related to model db its capital
 const User = require('../models/user')
 const isSignedIn = require('../middleware/is-signed-in')
+const upload = require('../middleware/upload');
 //routes/API's/ Controller Functions
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs')
 })
-router.post('/sign-up', async (req, res) => {
+router.post('/sign-up', upload ,async (req, res) => {
   try {
     const userInDatabase = await User.findOne({ username: req.body.username })
     if (userInDatabase) {
@@ -17,9 +18,10 @@ router.post('/sign-up', async (req, res) => {
     if (req.body.password !== req.body.confirmPassword) {
       return res.send('password and confirm password must match ')
     }
+    req.body.image = req.file.filename;
     //bcrypt for password encryption
     const hashedPassword = bcrypt.hashSync(req.body.password, 10)
-    req.body.password = hashedPassword
+    req.body.password = hashedPassword;
     const user = await User.create(req.body)
     res.send(`THANKS FOR SIGNING UP ${user.username}`)
   } catch (error) {
