@@ -1,12 +1,17 @@
-<% if (user) {%>
-<h1>RouteExplorer</h1>
-<a href="/auth/profile">Edit Profile</a>
-<a href="/cars">View Cars</a>
-<a href="/cars/new">List a Car</a>
-<a href="/rentals">My Rentals</a>
-<a href="/auth/sign-out">Sign out</a>
-<%} else {%>
-<h1>RouteExplorer</h1>
-<a href="/auth/sign-up">Sign up</a>
-<a href="/auth/sign-in">Sign in</a>
-<%}%>
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<link rel="stylesheet" href="/stylesheets/navbar-style.css" />
+<div class="navbar">
+  <h1>RouteExplorer</h1>
+  <div class="nav-links">
+    <% if (user) { %>
+    <a href="/auth/profile">Edit Profile</a>
+    <a href="/cars">View Cars</a>
+    <a href="/cars/new">Add a Car</a>
+    <a href="/rentals">My Rentals</a>
+    <a href="/auth/sign-out">Sign out</a>
+    <% } else { %>
+    <a href="/auth/sign-up">Sign up</a>
+    <a href="/auth/sign-in">Sign in</a>
+    <% } %>
+  </div>
+</div>
