@@ -10,7 +10,6 @@ const methodOverride = require('method-override')
 const morgan = require('morgan')
 app.set('view engine', 'ejs')
 
-
 // port config
 const PORT = process.env.PORT ? process.env.PORT : '3000'
 
@@ -38,9 +37,13 @@ app.use(passUserToView)
 //Require Controllers
 const authCtrl = require('./controllers/auth')
 const isSignedIn = require('./middleware/is-signed-in')
+const carsCtrl = require('./controllers/cars')
+const rentalCtrl = require('./controllers/rentals')
 
 //use controller
 app.use('/auth', authCtrl)
+app.use('/cars', isSignedIn, carsCtrl)
+app.use('/rentals', isSignedIn, rentalCtrl)
 
 //root route
 app.get('/', async (req, res) => {
@@ -50,5 +53,5 @@ app.get('/', async (req, res) => {
 
 //listen for the http
 app.listen(PORT, () => {
-  console.log(`Auth app  listening: ${PORT}`)
+  console.log('CarRental app  listening')
 })
