@@ -1,23 +1,22 @@
+<body>
+  <% include('../partials/_navbar') %>
+  <h1>edit your profile</h1>
 
-  <body>
-    <% include('../partials/_navbar') %>
-<h1>edit your profile</h1>
+  <form action="/auth/profile" method="post" enctype="multipart/form-data">
+    <label>Username</label>
+    <input type="text" name="username" value="<%= user.username %>" required />
 
-<form action="/auth/profile" method="post" enctype="multipart/form-data">
-  <label>Username</label>
-  <input type="text" name="username"  value="<%= user.username %>" required />
+    <label>Email</label>
+    <input type="email" name="email" value="<%= user.email %>" required />
 
-  <label>Email</label>
-  <input type="email" name="email"  value="<%= user.email %>" required />
-
-  <label>Phone number</label>
-  <input type="number" name="phone"  value="<%= user.phone %>" required />
-  <% if (user.image) { %>
-    <img src="../uploads/<%= user.image  %>" alt="<%= user.username %>">
- <% } %>
-  <label>Change Profile Picture:</label>
-  <input type="file" name="carImage" accept="image/*" value="" />
-  <br />
-  <button type="submit">Edit</button>
-</form>
+    <label>Phone number</label>
+    <input type="number" name="phone" value="<%= user.phone %>" required />
+    <% if (user.image) { %>
+    <img src="../uploads/<%= user.image  %>" alt="<%= user.username %>" />
+    <% } %>
+    <label>Change Profile Picture:</label>
+    <input type="file" name="image" accept="image/*" value="" />
+    <br />
+    <button type="submit">Edit</button>
+  </form>
 </body>
