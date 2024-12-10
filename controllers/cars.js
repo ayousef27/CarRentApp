@@ -1,5 +1,4 @@
 const router = require('express').Router()
-// const express = require('express')
 //import model
 const User = require('../models/user')
 const Car = require('../models/car')
@@ -94,35 +93,6 @@ router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
   }
 })
 
-// router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
-//   try {
-//     const selectedCar = await Car.findById(req.params.carId)
-//     if (selectedCar.user.equals(req.session.user._id)) {
-//       await selectedCar.updateOne(req.body)
-//       res.redirect(`/cars/${selectedCar._id}`)
-//     } else {
-//       res.send("You don't have permission to do that.")
-//     }
-//   } catch (error) {
-//     console.error(error)
-//   }
-// })
-
-// router.put('/:listingId', async (req, res) => {
-//   try {
-//     const currentListing = await Listing.findById(req.params.listingId)
-//     if (currentListing.owner.equals(req.session.user._id)) {
-//       await currentListing.updateOne(req.body)
-//       res.redirect('/listings')
-//     } else {
-//       res.send("You don't have permission to do that.")
-//     }
-//   } catch (error) {
-//     console.log(error)
-//     res.redirect('/')
-//   }
-// })
-
 // Delete car listing
 router.delete('/:carId', isCarOwner, async (req, res) => {
   try {
@@ -136,26 +106,5 @@ router.delete('/:carId', isCarOwner, async (req, res) => {
     console.error(error)
   }
 })
-
-// router.post('/', async (req, res) => {
-//   req.body.owner = req.session.user._id
-//   if (req.body.isAvailabile === 'on') {
-//     req.body.isAvailabile = true
-//   } else {
-//     req.body.isAvailabile = false
-//   }
-//   await Car.create(req.body)
-//   res.redirect('/cars')
-// })
-
-// router.get('/:carId', async (req, res) => {
-//   try {
-//     console.log('carId: ', req.params.carId)
-//     res.send(`cars show page`)
-//   } catch (error) {
-//     console.log(error)
-//     res.redirect('/')
-//   }
-// })
 
 module.exports = router
