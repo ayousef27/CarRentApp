@@ -22,6 +22,7 @@ router.get('/new', async (req, res) => {
 
 router.post('/', upload, validateCar, async (req, res) => {
   try {
+    req.body.image= req.file.filename;
     req.body.user = req.session.user._id
     await Car.create(req.body)
     res.redirect('/cars')

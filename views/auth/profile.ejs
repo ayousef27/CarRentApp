@@ -1,7 +1,6 @@
 <body>
   <% include('../partials/_navbar') %>
   <h1>edit your profile</h1>
-
   <form
     action="/auth/profile?_method=PUT"
     method="post"
@@ -9,10 +8,8 @@
   >
     <label>Username</label>
     <input type="text" name="username" value="<%= user.username %>" required />
-
     <label>Email</label>
     <input type="email" name="email" value="<%= user.email %>" required />
-
     <label>Phone number</label>
     <input type="number" name="phone" value="<%= user.phone %>" required />
     <% if (user.image) { %>
