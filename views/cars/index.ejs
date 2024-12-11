@@ -34,12 +34,14 @@
             method="post"
             class="inline-form"
           >
-            <button type="submit" class="button button-danger">Delete</button>
+            <button type="submit" class="button delete-button">Delete</button>
           </form>
           <% } else if (car.availability) { %>
-          <a href="/rentals/rent/<%= car._id %>" class="button">Rent</a>
+          <a href="/rentals/rent/<%= car._id %>" class="button rent-button"
+            >Rent</a
+          >
           <% } %>
-          <a href="/cars/<%= car._id %>" class="button button-secondary"
+          <a href="/cars/<%= car._id %>" class="button detail-button"
             >View Details</a
           >
         </div>
