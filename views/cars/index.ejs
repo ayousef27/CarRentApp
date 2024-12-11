@@ -3,26 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/cars-style.css" />
     <title>All Cars</title>
   </head>
   <body>
     <%- include('../partials/_navbar') %>
-    <h1>Available Cars</h1>
-    <% cars.forEach(car => { %>
-    <div>
-      <h2><%= car.manufacturer %> <%= car.model %> (<%= car.year %>)</h2>
-      <p>Price: $<%= car.price %> per day</p>
-      <p>Available: <%= car.availability ? 'Yes' : 'No' %></p>
-      <% if (user && String(user._id) === String(car.user._id)) { %>
-      <a href="/cars/<%= car._id %>/edit">Edit</a>
-      <form action="/cars/<%= car._id %>?_method=DELETE" method="post">
-        <button type="submit">Delete</button>
-      </form>
-      <% } else if (car.availability) { %>
-      <a href="/rentals/rent/<%= car._id %>">Rent</a>
-      <% } %>
-      <a href="/cars/<%= car._id %>">View Details</a>
+    <div class="car-grid">
+      <% cars.forEach(car => { %>
+      <div class="car-card">
+        <% if (car.image) { %>
+        <img
+          src="../uploads/<%=car.image%>"
+          alt="<%= car.manufacturer %> <%= car.model %>"
+          class="car-image"
+        />
+        <% } %>
+        <h2 class="car-title">
+          <%= car.manufacturer %> <%= car.model %> (<%= car.year %>)
+        </h2>
+        <p class="car-detail">Price: $<%= car.price %> per day</p>
+        <p class="car-detail">
+          Available: <%= car.availability ? 'Yes' : 'No' %>
+        </p>
+        <div class="car-actions">
+          <% if (user && String(user._id) === String(car.user._id)) { %>
+          <a href="/cars/<%= car._id %>/edit" class="button">Edit</a>
+          <form
+            action="/cars/<%= car._id %>?_method=DELETE"
+            method="post"
+            class="inline-form"
+          >
+            <button type="submit" class="button delete-button">Delete</button>
+          </form>
+          <% } else if (car.availability) { %>
+          <a href="/rentals/rent/<%= car._id %>" class="button rent-button"
+            >Rent</a
+          >
+          <% } %>
+          <a href="/cars/<%= car._id %>" class="button detail-button"
+            >View Details</a
+          >
+        </div>
+      </div>
+      <% }) %>
     </div>
-    <% }) %>
   </body>
 </html>
