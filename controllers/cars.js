@@ -35,9 +35,6 @@ router.post('/', upload, validateCar, async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const car = await Car.findById(req.params.id).populate('user')
-    if (!car) {
-      res.send('There is no car available for rent')
-    }
     res.render('cars/show', { car })
   } catch (error) {
     console.error(error)
@@ -57,13 +54,9 @@ router.get('/:carId', async (req, res) => {
   }
 })
 
-// Get car for editing
 router.get('/:carId/edit', isCarOwner, async (req, res) => {
   try {
     const car = await Car.findById(req.params.carId)
-    if (!car) {
-      return res.status(404).send('Car not found')
-    }
     res.render('cars/edit', { car })
   } catch (error) {
     console.error(error)
@@ -76,11 +69,11 @@ router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
       req.params.carId,
       {
         ...req.body,
-        image: req.file ? req.file.filename : undefined // Update image if a new one is uploaded
+        image: req.file ? req.file.filename : undefined
       },
       {
-        new: true, // Return the updated document
-        runValidators: true // Ensure validation is applied
+        new: true,
+        runValidators: true
       }
     )
 
@@ -99,9 +92,6 @@ router.put('/:carId', isCarOwner, upload, validateCar, async (req, res) => {
 router.delete('/:carId', isCarOwner, async (req, res) => {
   try {
     const car = await Car.findById(req.params.carId)
-    if (!car || !car.user.equals(req.session.user._id)) {
-      res.send("You don't own this car")
-    }
     await Car.findByIdAndDelete(req.params.carId)
     res.redirect('/cars')
   } catch (error) {
