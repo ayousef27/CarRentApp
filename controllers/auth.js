@@ -73,7 +73,7 @@ router.get('/profile', async (req, res) => {
   }
 })
 
-// POST Profile (Update Profile)
+// POST Profile Update Profile
 router.put('/profile', isSignedIn, upload, async (req, res) => {
   try {
     const userId = req.session.user._id

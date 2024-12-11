@@ -41,7 +41,7 @@ input {
 }
 
 button {
-  background-color: #e0be008d; /* Optional: Add a green background for the button */
+  background-color: #e0be008d; 
   color: white;
   border: none;
   padding: 10px;
@@ -51,5 +51,5 @@ button {
   margin-top: 10px;
 }
 button:hover {
-  background-color: #E0BF00; /* Optional: Darker green on hover */
+  background-color: #E0BF00; 
 }
