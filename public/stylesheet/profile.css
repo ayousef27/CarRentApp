@@ -9,7 +9,7 @@ body {
   font-family: 'Oswald', sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: whitesmoke;
+  background-color: #f9f5e7;
 }
 
 h1 {
@@ -57,13 +57,13 @@ button {
   width: 100%;
 }
 button:hover {
-  background-color: #E0BF00; 
+  background-color: #e0bf00; 
 }
 
 button.delete {
   display: inline-block;
   text-decoration: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #000000;
   padding: 5px 15px;
   border-style: solid;
@@ -74,10 +74,10 @@ button.delete {
   transition: background-color 0.3s ease;
   height: 50px;
   line-height: 30px;
-  text-align: center
+  text-align: center;
 }
 
 button.delete:hover {
-  background-color: #B02A37;
-  color: #FFFFFF;
+  background-color: #b02a37;
+  color: #ffffff;
 }

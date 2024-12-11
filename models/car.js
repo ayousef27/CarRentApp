@@ -26,7 +26,6 @@ const carSchema = new mongoose.Schema(
     },
     availability: {
       type: Boolean
-      // required: true
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
