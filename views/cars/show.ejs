@@ -15,7 +15,6 @@
           src="../uploads/<%=car.image%>"
           alt="<%= car.manufacturer %> <%= car.model %>"
         />
-        <% } %> <% if (user && String(user._id) === String(car.user._id)) { %>
         <%= car.manufacturer %> <%= car.model %> (<%= car.year %>)
       </h1>
       <p class="car-detail">License Plate: <%= car.plate %></p>
@@ -23,6 +22,7 @@
       <p class="car-detail">
         Available: <%= car.availability ? 'Yes' : 'No' %>
       </p>
+      <% } %> <% if (user && String(user._id) === String(car.user._id)) { %>
       <a href="/cars/<%= car._id %>/edit">Edit</a>
       <form action="/cars/<%= car._id %>?_method=DELETE" method="post">
         <button type="submit">Delete</button>
