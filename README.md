@@ -15,3 +15,17 @@ A car rental company that will provide the user with the ability to browse and l
 [Trello](https://trello.com/b/Nn0uqsBV/unit-2-project)
 
 ![ERD](/image.png)
+
+## Unsolved problems
+
+
+
+## Future enhancements
+
+
+## Technology used 
+- **Front-End:**
+- **Database:** MongoDB
+- **Project Management:**
+- **Designing:** 
+
