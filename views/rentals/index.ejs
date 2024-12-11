@@ -1,13 +1,24 @@
-<% include('../partials/_navbar') %>
-<h1>Your Rentals</h1>
-<% rentals.forEach(rental => { %>
-  <div>
-    <h2>Car: <%= rental.car.manufacturer %> <%= rental.car.model %></h2>
-    <p>From: <%= rental.startDate.toDateString() %></p>
-    <p>To: <%= rental.endDate.toDateString() %></p>
-    <p>Total Cost: $<%= rental.totalCost %></p>
-    <form action="/rentals/<%= rental._id %>?_method=DELETE" method="post">
-      <button type="submit">Cancel Rental</button>
-    </form>
-  </div>
-<% }) %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/myrentals-style.css" />
+
+    <title>Rentals</title>
+  </head>
+  <body>
+    <% include('../partials/_navbar') %> <% rentals.forEach(rental => { %>
+    <div>
+      <% rental.car.manufacturer %>
+      <h2>Car: <%= rental.car.manufacturer %> <%= rental.car.model %></h2>
+      <p>From: <%= rental.startDate.toDateString() %></p>
+      <p>To: <%= rental.endDate.toDateString() %></p>
+      <p>Total Cost: $<%= rental.totalCost %></p>
+      <form action="/rentals/<%= rental._id %>?_method=DELETE" method="post">
+        <button type="submit">Cancel Rental</button>
+      </form>
+    </div>
+    <% }) %>
+  </body>
+</html>

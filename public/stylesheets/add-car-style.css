@@ -72,14 +72,15 @@ input {
 }
 
 button {
-  background-color: #4caf50; /* Optional: Add a green background for the button */
+  background-color: #e0be008d; /* Optional: Add a green background for the button */
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
   border-radius: 4px;
+  width: 100%;
 }
 
 button:hover {
-  background-color: #45a049; /* Optional: Darker green on hover */
+  background-color: #e0bf00; /* Optional: Darker green on hover */
 }
