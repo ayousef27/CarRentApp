@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@105,300..700&family=Londrina+Shadow&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Pacifico&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding-top: 70px;
+  font-family: 'Oswald', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.index-container {
+  height: 100vh;
+  background-image: url('https://i.pinimg.com/736x/66/b6/e9/66b6e90e2ae5349479e0706d8561a167.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.text-container {
+  background-color: rgba(80, 117, 76, 0.207);
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.subheader {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+.text {
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
+}
+@media (max-width: 768px) {
+  .subheader {
+    font-size: 20px;
+  }
+
+  .text-container {
+    padding: 15px 30px;
+  }
+}
