@@ -24,7 +24,7 @@ A car rental company that will provide the user with the ability to browse and l
 
 
 ## Technology used 
-- **Front-End:**
+- **Front-End:* *
 - **Database:** MongoDB
 - **Project Management:**
 - **Designing:** 
