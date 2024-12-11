@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@105,300..700&family=Londrina+Shadow&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Pacifico&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background-color: #f9f5e7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+.detail-container {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%; /* Responsive width */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.detail-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.car-detail {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.detail-container a,
+.detail-container button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #000000;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.detail-container a:hover,
+.detail-container button:hover {
+  background-color: #e0bf00;
+  color: #000;
+}
+
+.detail-container form {
+  margin: 15px 0 0 0;
+}
+
+.detail-container form button {
+  width: 100%;
+}
