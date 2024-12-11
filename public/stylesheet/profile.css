@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@105,300..700&family=Londrina+Shadow&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Pacifico&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: whitesmoke;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+form img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  border-radius: 50%;
+}
+
+button {
+  background-color: #e0be008d; /* Optional: Add a green background for the button */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+}
+button:hover {
+  background-color: #E0BF00; /* Optional: Darker green on hover */
+}
+
+button.delete {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 5px 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #000000;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  height: 50px;
+  line-height: 30px;
+  text-align: center
+}
+
+button.delete:hover {
+  background-color: #B02A37;
+  color: #FFFFFF;
+}
