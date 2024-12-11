@@ -1,34 +1,41 @@
-<body>
-  <%- include('../partials/_navbar.ejs') %>
-  <h1>Add a new Car</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/add-car-style.css" />
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <div>
+      <form method="POST" action="/cars" enctype="multipart/form-data">
+        <label for="manufacturer">Manufacturer Name:</label>
+        <input type="text" name="manufacturer" id="manufacturer" required />
 
-  <form method="POST" action="/cars" enctype="multipart/form-data">
-    <label for="manufacturer">Manufacturer Name:</label>
-    <input type="text" name="manufacturer" id="manufacturer" required />
-    <br />
+        <label for="model">Model:</label>
+        <input type="text" name="model" id="model" required />
 
-    <label for="model">Model:</label>
-    <input type="text" name="model" id="model" required />
-    <br />
+        <label for="year">Year:</label>
+        <input type="number" name="year" id="year" min="2000" required />
 
-    <label for="year">Year:</label>
-    <input type="number" name="year" id="year" min="2000" required />
-    <br />
+        <label for="plate">Plate:</label>
+        <input type="number" name="plate" id="plate" min="0" required />
 
-    <label for="plate">Plate:</label>
-    <input type="number" name="plate" id="plate" min="0" required />
-    <br />
+        <label for="price">price:</label>
+        <input type="number" name="price" id="price" min="0" required />
 
-    <label for="price">price:</label>
-    <input type="number" name="price" id="price" min="0" required />
-    <br />
+        <input
+          type="hidden"
+          id="availability"
+          name="availability"
+          value="true"
+        />
 
-    <input type="hidden" id="availability" name="availability" value="true" />
-
-    <input type="hidden" id="user" name="user" value="<% user._id%>" />
-    <label for="carImage">Upload Car Image:</label>
-    <input type="file" name="carImage" accept="image/*" />
-    <br />
-    <button type="submit">Add Car</button>
-  </form>
-</body>
+        <input type="hidden" id="user" name="user" value="<% user._id%>" />
+        <label for="carImage">Upload Car Image:</label>
+        <input type="file" name="carImage" accept="image/*" />
+        <button type="submit">Add Car</button>
+      </form>
+    </div>
+  </body>
+</html>

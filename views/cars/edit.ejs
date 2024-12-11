@@ -1,5 +1,16 @@
-<% include('../partials/_navbar') %>
-<h1>Edit Car Listing</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/stylesheets/editcar-style.css" />
+  <title>Edit Details</title>
+</head>
+<body>
+  <%- include('../partials/_navbar') %>
+      <div>
+
 <form action="/cars/<%= car._id %>?_method=PUT" method="post" enctype="multipart/form-data">
   <label for="manufacturer">Manufacturer:</label>
   <input type="text" name="manufacturer" value="<%= car.manufacturer %>" required />
@@ -27,3 +38,7 @@
   <br />
   <button type="submit">Update Car</button>
 </form>
+    </div>
+
+</body>
+</html>
