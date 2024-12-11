@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@105,300..700&family=Londrina+Shadow&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Pacifico&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Oswald', sans-serif;
   margin: 0;
   padding: 20px;
   background-color: whitesmoke;
@@ -40,23 +47,37 @@ form img {
   border-radius: 50%;
 }
 
-form button {
-  padding: 10px 20px;
-  background-color: blue;
+button {
+  background-color: #e0be008d; /* Optional: Add a green background for the button */
   color: white;
   border: none;
-  border-radius: 3px;
+  padding: 10px;
   cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
 }
-
-form button:hover {
-  background-color: darkblue;
+button:hover {
+  background-color: #E0BF00; /* Optional: Darker green on hover */
 }
 
 button.delete {
-  background-color: red;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #FFFFFF;
+  color: #000000;
+  padding: 5px 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #000000;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  height: 50px;
+  line-height: 30px;
+  text-align: center
 }
 
 button.delete:hover {
-  background-color: darkred;
+  background-color: #B02A37;
+  color: #FFFFFF;
 }

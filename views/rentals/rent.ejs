@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="/stylesheet/rent.css">
+</head>
 <% include('../partials/_navbar') %>
 <h1>Rent <%= car.manufacturer %> <%= car.model %></h1>
 <form action="/rentals/rent/<%= car._id %>" method="post">

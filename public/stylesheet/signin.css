@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@105,300..700&family=Londrina+Shadow&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Pacifico&display=swap');
 
-body {
-  font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: whitesmoke;
+}
+body {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f5e7;
 }
 
 h1 {
@@ -35,15 +41,15 @@ input {
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  background-color: blue;
+  background-color: #e0be008d; /* Optional: Add a green background for the button */
   color: white;
   border: none;
-  border-radius: 3px;
+  padding: 10px;
   cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 10px;
 }
-
 button:hover {
-  background-color: darkblue;
+  background-color: #E0BF00; /* Optional: Darker green on hover */
 }

@@ -1,45 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wdth,wght@105,300..700&family=Londrina+Shadow&family=Orbitron:wght@400..900&family=Oswald:wght@200..700&family=Pacifico&display=swap');
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: 'Oswald', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f9f5e7;
+  background-color: #f9f9f9;
 }
 
 h1 {
+  margin-top: 60px; /* Space to avoid overlapping with the navbar */
   text-align: center;
-  color: darkgray;
+  color: #333;
 }
 
 form {
-  max-width: 400px;
-  margin: 30px auto;
+  max-width: 500px;
+  margin: 20px auto;
   padding: 20px;
-  border: 1px solid lightgray;
-  background-color: white;
+  background: white;
+  border: 1px solid #ddd;
   border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for a modern look */
 }
 
-label {
+form label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
 }
 
-input {
+form input {
   width: 100%;
-  padding: 8px;
-  
-  border: 1px solid gray;
-  border-radius: 3px;
-  box-shadow: 0 2px 5px rgba(0,0, 0, 0.3);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 button {
