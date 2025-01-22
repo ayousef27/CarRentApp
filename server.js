@@ -1,5 +1,5 @@
-const dotenv = require('dotenv')
-dotenv.config()
+
+require('dotenv').config();
 
 const express = require('express')
 const app = express()
@@ -54,3 +54,5 @@ app.get('/', async (req, res) => {
 app.listen(PORT, () => {
   console.log('Car app  listening')
 })
+
+console.log('SESSION_SECRET:', process.env.SESSION_SECRET);
