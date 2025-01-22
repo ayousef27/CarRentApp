@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 // port config
-const PORT = process.env.PORT ? process.env.PORT : '3000'
+const PORT = process.env.PORT || 3000;
 
 //data connection
 mongoose.connect(process.env.MONGODB_URI)
